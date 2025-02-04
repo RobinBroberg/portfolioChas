@@ -23,7 +23,6 @@ export default {
       "sunset",
       "dracula",
       "luxury",
-      "coffee",
     ],
   },
 };

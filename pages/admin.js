@@ -88,6 +88,13 @@ export default function AdminPage() {
     }
   }
 
+  function removeTechFromProject(techToRemove) {
+    setProjectForm({
+      ...projectForm,
+      tech: projectForm.tech.filter((tech) => tech !== techToRemove),
+    });
+  }
+
   function handleTechSkillSubmit(e) {
     e.preventDefault();
     if (techSkillName.trim() !== "" && techSkillUrl.trim() !== "") {
@@ -135,15 +142,20 @@ export default function AdminPage() {
 
   return (
     <>
-      <div className="navbar bg-base-100 justify-end">
-        <ThemeSwitcher />
-        <a href="/" className="btn btn-square btn-ghost ml-5">
-          Home
-        </a>
+      <div className="navbar ">
+        <div className="flex w-full items-center justify-between">
+          <div className="text-lg font-bold">Admin Dashboard</div>
+          <div className="flex items-center">
+            <ThemeSwitcher />
+            <a href="/" className="btn btn-square btn-ghost ml-5">
+              Home
+            </a>
+          </div>
+        </div>
       </div>
 
       <div className="container mx-auto p-4">
-        <h2 className="text-3xl font-bold mb-4 text-center">Admin Dashboard</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center">Projects</h2>
 
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto mb-8">
           <div className="form-control mb-4">
@@ -193,7 +205,6 @@ export default function AdminPage() {
             />
           </div>
 
-          {/* Tech Skills Section */}
           <div className="form-control mb-4">
             <label className="label">Tech Used</label>
             <div className="flex gap-2">
