@@ -14,7 +14,11 @@ export default function Home() {
             </li>
             <li>
               <a href="https://github.com/RobinBroberg">
-                <img src="/github.png" alt="Github" className="w-7 h-7" />
+                <img
+                  src="/github.png"
+                  alt="Github"
+                  className="w-7 h-7 invert-logo"
+                />
               </a>
             </li>
             <li>
@@ -26,7 +30,11 @@ export default function Home() {
           <div className="flex">
             <ThemeSwitcher />
             <a href="/admin" className="ml-5">
-              <img src="/admin-icon.png" alt="Admin" className="w-7 h-7 mr-3" />
+              <img
+                src="/admin-icon.png"
+                alt="Admin"
+                className="w-7 h-7 mr-3 invert-logo"
+              />
             </a>
           </div>
         </div>
@@ -63,7 +71,11 @@ export default function Home() {
                 <img
                   src={skill.url}
                   alt={skill.name}
-                  className="w-16 h-16 object-contain rounded-full mx-3"
+                  className={
+                    skill.url == "/github.png"
+                      ? "w-16 h-16 object-contain rounded-full mx-3 invert-logo"
+                      : "w-16 h-16 object-contain rounded-full mx-3"
+                  }
                 />
                 <p className="text-center text-xs mt-1">{skill.name}</p>
               </div>
