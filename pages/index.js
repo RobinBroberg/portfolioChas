@@ -59,11 +59,11 @@ export default function Home() {
           <h2 className="text-3xl font-semibold">My Tech Skills</h2>
           <div className="flex flex-wrap gap-4 mt-4 justify-center">
             {techSkills.map((skill, index) => (
-              <div key={index} className="relative">
+              <div key={index} className="mt-4">
                 <img
                   src={skill.url}
                   alt={skill.name}
-                  className="w-16 h-16 object-contain rounded-full"
+                  className="w-16 h-16 object-contain rounded-full mx-3"
                 />
                 <p className="text-center text-xs mt-1">{skill.name}</p>
               </div>
