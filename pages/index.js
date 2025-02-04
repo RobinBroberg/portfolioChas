@@ -1,56 +1,87 @@
 import React, { useContext } from "react";
 import { PortfolioContext } from "@/contexts/PortfolioContext";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Home() {
-  const { projects } = useContext(PortfolioContext);
+  const { projects, techSkills } = useContext(PortfolioContext);
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="navbar bg-base-100 justify-end">
-        <a href="/admin" className="btn btn-square btn-ghost">
-          Admin
-        </a>
+      <div className="navbar bg-base-300 shadow-md  p-0 custom-navbar">
+        <div className="flex w-full items-center justify-between">
+          <ul className="menu menu-horizontal flex items-center">
+            <li className="flex items-center">
+              <p>Contact:</p>
+            </li>
+            <li>
+              <a href="https://github.com/RobinBroberg">
+                <img src="/github.png" alt="Github" className="w-7 h-7" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/robin-broberg/">
+                <img src="/linkedin.png" alt="Linkedin" className="w-7 h-7" />
+              </a>
+            </li>
+          </ul>
+          <div className="flex">
+            <ThemeSwitcher />
+            <a href="/admin" className="ml-5">
+              <img src="/admin-icon.png" alt="Admin" className="w-7 h-7 mr-3" />
+            </a>
+          </div>
+        </div>
       </div>
 
-      <section className="hero bg-base-200">
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content flex flex-col md:flex-row items-center text-center md:text-left text-neutral-content">
-          {/* Left Side: Text */}
+      <section className="hero bg-base-200 pt-10">
+        <div className="hero-overlay  bg-base-200 mt-12"></div>
+        <div className="hero-content flex flex-col md:flex-row items-center text-center md:text-left">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello, I'm Robin</h1>
-            <p className="mb-5">I’m a front-end developer.</p>
+            <p className="mb-5 ml-1 text-lg font-semibold">
+              I’m a front-end developer.
+            </p>
           </div>
 
           <div className="md:ml-10">
-            <img
-              src="/profile.jpg"
-              alt="Robin's Profile"
-              className="w-48 h-48 rounded-full  shadow-lg object-cover object-top"
-            />
+            <div className="p-1 bg-gradient-to-tr from-purple-500 via-pink-900 to-blue-500 rounded-full">
+              <img
+                src="/profile.jpg"
+                alt="Robin's Profile"
+                className="w-48 h-48 rounded-full shadow-lg object-cover object-top"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="container mx-auto p-4 ">
-        <section className="my-8 text-center">
-          <h2 className="text-3xl font-semibold">Tech Skills</h2>
+      <div className="container mx-auto p-4">
+        <section className="my-8 text-center mb-20">
+          <h2 className="text-3xl font-semibold">My Tech Skills</h2>
           <div className="flex flex-wrap gap-4 mt-4 justify-center">
-            <span className="badge badge-primary">JavaScript</span>
-            <span className="badge badge-primary">Java</span>
-            <span className="badge badge-primary">React</span>
-
-            <span className="badge badge-primary">CSS</span>
+            {techSkills.map((skill, index) => (
+              <div key={index} className="relative">
+                <img
+                  src={skill.url}
+                  alt={skill.name}
+                  className="w-16 h-16 object-contain rounded-full"
+                />
+                <p className="text-center text-xs mt-1">{skill.name}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className="my-8 text-center mb-20">
-          <h2 className="text-3xl font-semibold">Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <section className="text-center mb-20 mt-8">
+          <h2 className="text-3xl font-semibold mb-12">My Projects</h2>
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
             {projects.map((project) => (
-              <div
+              <a
                 key={project.id}
-                className="card card-compact bg-base-100 w-96 shadow-xl"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-compact bg-base-300 shadow-xl mx-auto w-80 block"
               >
-                {/* Project Image (Optional) */}
                 {project.image && (
                   <figure>
                     <img
@@ -60,30 +91,23 @@ export default function Home() {
                     />
                   </figure>
                 )}
-
                 <div className="card-body">
                   <h2 className="card-title">{project.title}</h2>
                   <p>{project.description}</p>
-
-                  {project.link && (
-                    <div className="card-actions justify-end">
-                      <a
-                        href={project.link}
-                        className="btn btn-primary"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Project
-                      </a>
-                    </div>
-                  )}
+                  <div className="card-actions justify-end mt-5">
+                    {project.tech.map((tech, index) => (
+                      <div key={index} className="badge badge-secondary">
+                        {tech}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>
       </div>
-      <footer className="footer footer-center bg-base-300 text-base-content p-4 fixed bottom-0">
+      <footer className="footer footer-center bg-base-200 text-base-content p-4 fixed bottom-0">
         <aside>
           <p>Copyright © 2025 - All right reserved by Robin Broberg</p>
         </aside>

@@ -4,9 +4,8 @@ export const PortfolioContext = createContext();
 
 export default function PortfolioProvider({ children }) {
   const [projects, setProjects] = useState([]);
-  
+  const [techSkills, setTechSkills] = useState([]);
 
-  // Load projects from local storage on mount
   useEffect(() => {
     const storedProjects = localStorage.getItem("projects");
     if (storedProjects) {
@@ -14,33 +13,56 @@ export default function PortfolioProvider({ children }) {
     }
   }, []);
 
-  // Save projects to local storage whenever projects change
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
 
-  // Function to add a new project
-  const addProject = (project) => {
-    setProjects([...projects, project]);
-  };
+  useEffect(() => {
+    const storedTechSkills = localStorage.getItem("techSkills");
+    if (storedTechSkills) {
+      setTechSkills(JSON.parse(storedTechSkills));
+    }
+  }, []);
 
-  // Function to update an existing project
-  const updateProject = (updatedProject) => {
+  useEffect(() => {
+    localStorage.setItem("techSkills", JSON.stringify(techSkills));
+  }, [techSkills]);
+
+  function addProject(project) {
+    setProjects([...projects, project]);
+  }
+
+  function updateProject(updatedProject) {
     setProjects(
       projects.map((project) =>
         project.id === updatedProject.id ? updatedProject : project
       )
     );
-  };
+  }
 
-  // Function to delete a project
-  const deleteProject = (id) => {
+  function deleteProject(id) {
     setProjects(projects.filter((project) => project.id !== id));
-  };
+  }
+
+  function addTechSkill(skill) {
+    setTechSkills([...techSkills, skill]);
+  }
+
+  function deleteTechSkill(skillName) {
+    setTechSkills(techSkills.filter((skill) => skill.name !== skillName));
+  }
 
   return (
     <PortfolioContext.Provider
-      value={{ projects, addProject, updateProject, deleteProject }}
+      value={{
+        projects,
+        addProject,
+        updateProject,
+        deleteProject,
+        techSkills,
+        addTechSkill,
+        deleteTechSkill,
+      }}
     >
       {children}
     </PortfolioContext.Provider>
