@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { PortfolioContext } from "@/contexts/PortfolioContext";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function AdminPage() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -135,7 +136,8 @@ export default function AdminPage() {
   return (
     <>
       <div className="navbar bg-base-100 justify-end">
-        <a href="/" className="btn btn-square btn-ghost">
+        <ThemeSwitcher />
+        <a href="/" className="btn btn-square btn-ghost ml-5">
           Home
         </a>
       </div>
