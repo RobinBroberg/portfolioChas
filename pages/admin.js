@@ -26,12 +26,12 @@ export default function AdminPage() {
     }
   }
 
-  const handleChange = (e) => {
+  function handleChange(e) {
     const { name, value } = e.target;
     setProjectForm((prev) => ({ ...prev, [name]: value }));
-  };
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
     if (projectForm.id) {
@@ -45,26 +45,30 @@ export default function AdminPage() {
 
     // Reset the form.
     setProjectForm({ id: "", title: "", description: "", link: "" });
-  };
+  }
 
   // Pre-fill the form when the user wants to edit a project.
-  const handleEdit = (project) => {
+  function handleEdit(project) {
     setProjectForm(project);
-  };
+  }
 
   // Delete a project by its id.
-  const handleDelete = (id) => {
+  function handleDelete(id) {
     deleteProject(id);
-  };
+  }
+
+  function keyDown(e) {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  }
 
   if (!loggedIn) {
     return (
       <div className="mx-auto max-w-sm p-4">
         <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
         <div className="form-control mb-4">
-          <label className="label">
-            <span className="label-text">Username</span>
-          </label>
+          <label className="label">Username</label>
           <input
             type="text"
             value={username}
@@ -74,15 +78,14 @@ export default function AdminPage() {
           />
         </div>
         <div className="form-control mb-4">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
+          <label className="label">Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="input input-bordered"
             placeholder="Password"
+            onKeyDown={keyDown}
           />
         </div>
         <button onClick={handleLogin} className="btn btn-primary w-full">
@@ -105,9 +108,7 @@ export default function AdminPage() {
         {/* Project Form */}
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto mb-8">
           <div className="form-control mb-4">
-            <label className="label">
-              <span className="label-text">Title</span>
-            </label>
+            <label className="label">Title</label>
             <input
               type="text"
               name="title"
@@ -132,9 +133,7 @@ export default function AdminPage() {
           </div>
 
           <div className="form-control mb-4">
-            <label className="label">
-              <span className="label-text">Project Link</span>
-            </label>
+            <label className="label">Project Link</label>
             <input
               type="text"
               name="link"

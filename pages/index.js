@@ -10,15 +10,27 @@ export default function Home() {
           Admin
         </a>
       </div>
-      <div className="container mx-auto p-4 ">
-        <section className="text-center mb-8 mt-14">
-          <h1 className="text-4xl font-bold">Hello, I'm Robin</h1>
-          <p className="mt-4">
-            I’m a front-end developer passionate about building impactful
-            projects.
-          </p>
-        </section>
 
+      <section className="hero bg-base-200">
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content flex flex-col md:flex-row items-center text-center md:text-left text-neutral-content">
+          {/* Left Side: Text */}
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Hello, I'm Robin</h1>
+            <p className="mb-5">I’m a front-end developer.</p>
+          </div>
+
+          <div className="md:ml-10">
+            <img
+              src="/profile.jpg"
+              alt="Robin's Profile"
+              className="w-48 h-48 rounded-full  shadow-lg object-cover object-top"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto p-4 ">
         <section className="my-8 text-center">
           <h2 className="text-3xl font-semibold">Tech Skills</h2>
           <div className="flex flex-wrap gap-4 mt-4 justify-center">
@@ -30,19 +42,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="my-8 text-center">
+        <section className="my-8 text-center mb-20">
           <h2 className="text-3xl font-semibold">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {projects.map((project) => (
-              <div key={project.id} className="card bg-base-300 shadow-lg">
+              <div
+                key={project.id}
+                className="card card-compact bg-base-100 w-96 shadow-xl"
+              >
+                {/* Project Image (Optional) */}
+                {project.image && (
+                  <figure>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-48 w-full object-cover"
+                    />
+                  </figure>
+                )}
+
                 <div className="card-body">
-                  <h3 className="card-title mx-auto">{project.title}</h3>
+                  <h2 className="card-title">{project.title}</h2>
                   <p>{project.description}</p>
+
                   {project.link && (
-                    <div className="mt-2">
+                    <div className="card-actions justify-end">
                       <a
                         href={project.link}
-                        className="btn btn-sm btn-primary"
+                        className="btn btn-primary"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -56,7 +83,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <footer className="footer footer-center bg-base-300 text-base-content p-4 fixed bottom-0 mt-20">
+      <footer className="footer footer-center bg-base-300 text-base-content p-4 fixed bottom-0">
         <aside>
           <p>Copyright © 2025 - All right reserved by Robin Broberg</p>
         </aside>

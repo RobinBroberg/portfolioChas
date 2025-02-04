@@ -4,6 +4,7 @@ export const PortfolioContext = createContext();
 
 export default function PortfolioProvider({ children }) {
   const [projects, setProjects] = useState([]);
+  
 
   // Load projects from local storage on mount
   useEffect(() => {
