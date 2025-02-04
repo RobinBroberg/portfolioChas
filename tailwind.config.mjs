@@ -13,5 +13,17 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      "light",
+      "dark",
+      "cupcake",
+      "night",
+      "sunset",
+      "dracula",
+      "luxury",
+      "coffee",
+    ],
+  },
 };
