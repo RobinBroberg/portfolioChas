@@ -14,7 +14,7 @@ const startingProjects = [
   {
     id: "2",
     title: "Project Two",
-    description: "Another demo project for testing purposes.",
+    description: "Another demo project for testing.",
     tech: ["Next.js", "DaisyUI"],
     link: "https://example.com/project-two",
     image: "/project2.jpg",
@@ -22,8 +22,8 @@ const startingProjects = [
   {
     id: "3",
     title: "Project Three",
-    description: "Another demo project for testing purposes.",
-    tech: ["Next.js", "DaisyUI"],
+    description: "And another demo project for testing.",
+    tech: ["Next.js", "DaisyUI", "Javascript"],
     link: "https://example.com/project-three",
     image: "/project3.jpg",
   },
