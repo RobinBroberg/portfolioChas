@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 max-w-6xl">
         <section className="my-8 text-center mb-20">
           <h2 className="text-3xl font-semibold">My Tech Skills</h2>
           <div className="flex flex-wrap gap-4 mt-4 justify-center">
