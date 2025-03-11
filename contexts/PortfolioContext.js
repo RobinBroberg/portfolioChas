@@ -5,20 +5,21 @@ export const PortfolioContext = createContext();
 const startingProjects = [
   {
     id: "1",
-    title: "Ai-powered Project",
+    title: "AI-powered Project",
     description:
-      "An Ai powered website i made as a group project at Chas Academy",
+      "An AI-powered website i made as a group project at Chas Academy",
     tech: ["React", "Tailwind CSS", "Next.js"],
     link: "https://github.com/zarhaselene/gemini_ai-site",
     image: "/gemini.png",
   },
   {
     id: "2",
-    title: "Project Two",
-    description: "Another demo project for testing.",
-    tech: ["Next.js", "DaisyUI"],
-    link: "https://example.com/project-two",
-    image: "/project2.jpg",
+    title: "News Site",
+    description:
+      "A news site using newsdata api, a group project at Chas Academy",
+    tech: ["Next.js", "React", "Tailwind CSS"],
+    link: "https://github.com/NoelPerland/news_project",
+    image: "/news-site.png",
   },
   {
     id: "3",
