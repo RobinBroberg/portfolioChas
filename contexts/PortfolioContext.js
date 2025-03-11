@@ -5,11 +5,12 @@ export const PortfolioContext = createContext();
 const startingProjects = [
   {
     id: "1",
-    title: "Project One",
-    description: "This is a demo project to showcase my work.",
-    tech: ["React", "Tailwind CSS"],
-    link: "https://example.com/project-one",
-    image: "/project1.jpg",
+    title: "Ai-powered Project",
+    description:
+      "An Ai powered website i made as a group project at Chas Academy",
+    tech: ["React", "Tailwind CSS", "Next.js"],
+    link: "https://github.com/zarhaselene/gemini_ai-site",
+    image: "/gemini.png",
   },
   {
     id: "2",
@@ -33,6 +34,7 @@ const startingTechSkills = [
   { name: "React", url: "/react.png" },
   { name: "JavaScript", url: "/javascript.png" },
   { name: "Tailwind CSS", url: "/tailwind.png" },
+  { name: "CSS", url: "/css.png" },
 ];
 
 export default function PortfolioProvider({ children }) {
